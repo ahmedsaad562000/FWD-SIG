@@ -10,6 +10,7 @@ import com.company.model.Invoice_Header;
 import com.company.model.Invoice_Line;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Locale;
 import javax.swing.JOptionPane;
@@ -307,10 +308,11 @@ public class UIPanel extends javax.swing.JPanel {
             return;
         }
         else{
-        
+        int index2 = Inv_L_Table.getSelectedRow();
+        int index1 = Inv_H_Table.getSelectedRow();
             DefaultTableModel model = (DefaultTableModel) Inv_L_Table.getModel();
-model.removeRow(clicked_Line_row);
-Control.delete_line_from_selected_inv(clicked_Header_row, clicked_Line_row);
+model.removeRow(index2);
+Control.delete_line_from_selected_inv(clicked_Header_row, index2);
 clicked_Line_row = -1;
 clicked_Header_row = -1;
 Inv_H_Table.clearSelection();
@@ -436,10 +438,16 @@ Inv_L_Table.clearSelection();
             return;
         }
         else{
-        
+             int index = Inv_H_Table.getSelectedRow();
             DefaultTableModel model = (DefaultTableModel) Inv_H_Table.getModel();
-            model.removeRow(clicked_Header_row-1);
-            FileOperations.getInv_H().remove(clicked_Header_row-1);
+            model.removeRow(index);
+            
+            
+            
+            
+            
+            
+            FileOperations.getInv_H().remove(index);
             clicked_Line_row = -1;
             clicked_Header_row = -1;
             Inv_H_Table.clearSelection();

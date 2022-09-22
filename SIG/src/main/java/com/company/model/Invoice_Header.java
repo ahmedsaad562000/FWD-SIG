@@ -13,6 +13,7 @@ public class Invoice_Header {
     //private Invoice_Line[] Lines = new Invoice_Line[];
     private ArrayList<Invoice_Line> Lines = new ArrayList<Invoice_Line>();
     private int Lines_Count = 0;
+    
 
     public Invoice_Header(int no, Date inv_Date, String customer) {
         this.no = no;
@@ -36,6 +37,7 @@ public class Invoice_Header {
         return Lines.size();
     }
     public void add_Line(Invoice_Line Line) {
+        Line.setInv_id(Lines.size());
         Lines.add(Line);
         Lines_Count++;
         this.Total += Line.getTotal();
@@ -62,13 +64,20 @@ public class Invoice_Header {
         }
         return null;
     }
+    
+        /*public Invoice_Line get_Invoice_by_total(int total) {
+        if (no == this.no) {
+            return this;
+        }
+        return null;
+    }*/
 
 
     @Override
     public String toString() {
         String lines_print = "";
 
-        for (int i = 0; i < Lines_Count; i++) {
+        for (int i = 0; i < Lines.size(); i++) {
             if (Lines.get(i) != null) {
                 lines_print += Lines.get(i).toString();
                 lines_print += "\n";

@@ -134,16 +134,16 @@ public class Control {
             
         }
       
-      public static void Update_Tables(JTable Inv_H_Table ,JTable Inv_L_Table)
+     /* public static void Update_Tables(JTable Inv_L_Table , int Invoice_index)
       {
-         for(int i = 0  ; i<Inv_H_Table.getRowCount();i++) 
+         for(int i = 0  ; i<Inv_L_Table.getRowCount();i++) 
          {
-             
+             FileOperations.getInv_H().get(Invoice_index).get
          }
        
             
        
-    }
+    }*/
 }
     /*public static String[][] get_Lines_data()
     {

@@ -9,6 +9,7 @@ public class Invoice_Line {
     private int Price;
     private int Count;
     private int Total;
+    private int inv_id = 0;
 
     public Invoice_Line(Invoice_Header pInv , String item_Name, int price, int count) {
         this.inv_no = pInv.getNo();
@@ -17,6 +18,14 @@ public class Invoice_Line {
         Count = count;
         parent_Invoice = pInv;
         Update_total_line_Cost();
+    }
+
+    public void setInv_id(int inv_id) {
+        this.inv_id = inv_id;
+    }
+
+    public int getInv_id() {
+        return inv_id;
     }
     
 
