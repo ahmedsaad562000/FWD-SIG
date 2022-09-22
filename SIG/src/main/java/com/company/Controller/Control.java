@@ -161,17 +161,4 @@ public class Control {
        
     }
 }
-    /*public static String[][] get_Lines_data()
-    {
-
-        Invoice_Header[] Inv_Headers = FileOperations.getInv_H();
-        ArrayList<String><String> cars = new ArrayList<String>();
-        String [][] Data = new String[Inv_Headers.length][5];
-        for (int i = 0 ; i<Inv_Headers.length ; i++)
-            if(Inv_Headers != null)
-            {
-                Data[i] = Inv_Headers[i].string_array_to_filltable();
-            }
-        return Data;
-
-    }*/
+   

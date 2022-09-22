@@ -60,7 +60,7 @@ public class FileOperations  {
                 Invoices.add(Inv_H);
                 Inv_H_count++;
             }
-            else {/*more or less columns*/JOptionPane.showMessageDialog(null, "records Contain more or less columns than expected", "wromg date Structure", JOptionPane.WARNING_MESSAGE);}
+            else {/*more or less columns*/JOptionPane.showMessageDialog(null, "records Contain more or less columns than expected \n Load aborted", "wromg date Structure", JOptionPane.WARNING_MESSAGE);return null;}
         }
 
         return Invoices;
@@ -133,8 +133,10 @@ public class FileOperations  {
 
                 String sb = new String(b);
                 String[] Inv_Headers_Text = sb.split(System.lineSeparator());
-                Inv_H = null;
-                Inv_H = read_Header_File(Inv_Headers_Text);
+                ArrayList<Invoice_Header>  in_H_temp = new ArrayList<Invoice_Header>();
+                in_H_temp = read_Header_File(Inv_Headers_Text);
+                if(in_H_temp == null){return;}
+                Inv_H = in_H_temp;
                 open_Line_file(parent, default_or_new);
 
 
