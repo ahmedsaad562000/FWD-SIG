@@ -1,5 +1,6 @@
 package com.company.view;
 
+import com.company.Controller.Control;
 import com.company.model.FileOperations;
 
 import javax.swing.*;
@@ -68,6 +69,8 @@ public class MainFrame extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if (e.getActionCommand().equals("open")) {
             FileOperations.open_Header_file(this, false);
+            UIPanel ss = (UIPanel) this.getContentPane();
+            Control.Update_Header_Table(ss.getInv_H_Table());
         } else if (e.getActionCommand().equals("save")) {
             FileOperations.Save_Header_file(this);
         }

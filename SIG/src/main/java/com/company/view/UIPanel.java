@@ -25,6 +25,14 @@ import javax.swing.table.TableModel;
  */
 public class UIPanel extends javax.swing.JPanel {
 
+    public JTable getInv_H_Table() {
+        return Inv_H_Table;
+    }
+
+    public JTable getInv_L_Table() {
+        return Inv_L_Table;
+    }
+
     /**
      * Creates new form UIPanel
      */

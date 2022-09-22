@@ -22,7 +22,7 @@ import java.util.Locale;
 
 public class FileOperations  {
     private static ArrayList<Invoice_Header> Inv_H = new  ArrayList<Invoice_Header>();
-
+    private static ArrayList<Invoice_Header> Inv_H_backup = new  ArrayList<Invoice_Header>();      
     public static ArrayList<Invoice_Header> getInv_H() {
         return Inv_H;
     }
@@ -53,14 +53,14 @@ public class FileOperations  {
                     date = formatter.parse(Invoice_without_commas[1]);
                 } catch (ParseException e) {
                     //wrong date format
-                    JOptionPane.showMessageDialog(null, "wrong date format", "wrong date format", JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "wrong date format", "wrong date format", JOptionPane.WARNING_MESSAGE);return null;
                 }
 
                 Invoice_Header Inv_H = new Invoice_Header(Integer.parseInt(Invoice_without_commas[0]) ,date , Invoice_without_commas[2]);
                 Invoices.add(Inv_H);
                 Inv_H_count++;
             }
-            else {/*more or less columns*/JOptionPane.showMessageDialog(null, "records Contain more or less columns than expected \n Load aborted", "wromg date Structure", JOptionPane.WARNING_MESSAGE);return null;}
+            else {/*more or less columns*/JOptionPane.showMessageDialog(null, "records Contain more or less columns than expected \n Load aborted", "wrong date Structure", JOptionPane.WARNING_MESSAGE);return null;}
         }
 
         return Invoices;
@@ -86,9 +86,9 @@ public class FileOperations  {
                     Invoice_Line L = new Invoice_Line(target ,Line_without_commas[1] , Integer.parseInt(Line_without_commas[2]) , Integer.parseInt(Line_without_commas[3]) );
                     target.add_Line(L);
                 }
-                else{/*line that has no header*/}
+                else{/*line that has no header*/JOptionPane.showMessageDialog(null, "some lines have no invoices in the header file \n Load aborted", "wrong data Insertion", JOptionPane.WARNING_MESSAGE);Inv_H = Inv_H_backup;return;}
             }
-            else {/*more or less columns*/}
+            else {/*more or less columns*/JOptionPane.showMessageDialog(null, "records Contain more or less columns than expected \n Load aborted", "wrong date Structure", JOptionPane.WARNING_MESSAGE);Inv_H = Inv_H_backup;return;}
         }
     }
 
@@ -111,7 +111,8 @@ public class FileOperations  {
                     ff =  ff.substring(ff.lastIndexOf(".")+1);
                     if(ff.equals("csv") == false) {
                        
-                        JOptionPane.showMessageDialog(null, "File extension should be .csv", "Wrong Format for Header file ", JOptionPane.WARNING_MESSAGE);
+                        JOptionPane.showMessageDialog(null, "File extension should be .csv \n load aborted", "Wrong Format for Header file ", JOptionPane.WARNING_MESSAGE);
+                        
                         return;
                     }
                     else
@@ -135,7 +136,9 @@ public class FileOperations  {
                 String[] Inv_Headers_Text = sb.split(System.lineSeparator());
                 ArrayList<Invoice_Header>  in_H_temp = new ArrayList<Invoice_Header>();
                 in_H_temp = read_Header_File(Inv_Headers_Text);
+                
                 if(in_H_temp == null){return;}
+                Inv_H_backup = Inv_H;
                 Inv_H = in_H_temp;
                 open_Line_file(parent, default_or_new);
 
@@ -262,7 +265,7 @@ public class FileOperations  {
                     FOS.write(b);
                     Save_Line_file(parent);
 
-                } catch (FileNotFoundException e) {
+                } catch (FileNotFoundException e) {JOptionPane.showMessageDialog(null, "File not found", "File not found ", JOptionPane.WARNING_MESSAGE);
                 } catch (IOException e) {
                 } finally {
                     try {
@@ -305,7 +308,7 @@ public class FileOperations  {
                     byte[] b = Inv_L_print.getBytes();
                     FOS.write(b);
 
-                } catch (FileNotFoundException e) {
+                } catch (FileNotFoundException e) { JOptionPane.showMessageDialog(null, "File not found", "File not found ", JOptionPane.WARNING_MESSAGE);
                 } catch (IOException e) {
                 } finally {
                     try {

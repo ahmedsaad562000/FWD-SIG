@@ -133,7 +133,27 @@ public class Control {
         }
             
         }
-      
+      public static void Update_Header_Table(JTable Inv_H_Table)
+      {
+            String[][] H_Data = Control.get_Header_data();
+            String[] H_Cols = {"No.","Date","Customer","Total"};
+        
+        
+        Inv_H_Table.setModel(new javax.swing.table.DefaultTableModel(
+            H_Data,
+                H_Cols)  {
+                    
+                @Override
+    public boolean isCellEditable(int row, int column) {
+       
+       return false;
+            }
+        
+        }
+        );
+        
+          
+      }
       public static void Update_Invoice_lines(JTable Inv_L_Table , int Invoice_index)
       {
           
