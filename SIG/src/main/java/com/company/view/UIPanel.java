@@ -8,6 +8,7 @@ import com.company.Controller.Control;
 import com.company.model.FileOperations;
 import com.company.model.Invoice_Header;
 import com.company.model.Invoice_Line;
+import com.sun.org.apache.xml.internal.serialize.LineSeparator;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -374,8 +375,9 @@ Inv_L_Table.clearSelection();
     }//GEN-LAST:event_formFocusGained
 
     private void save_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_save_btnActionPerformed
-         SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy", Locale.ENGLISH);
-
+        if(Inv_H_Table.getSelectedRow()==-1){JOptionPane.showMessageDialog(null, "Please Select Invoice and make sure its highighted", "No Invoice Selected", JOptionPane.INFORMATION_MESSAGE);return; } 
+        SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy", Locale.ENGLISH);
+            int index = Inv_H_Table.getSelectedRow();
                 Date date = null;
                 try {
                     date = formatter.parse(Date_TF.getText());
@@ -384,6 +386,9 @@ Inv_L_Table.clearSelection();
                     JOptionPane.showMessageDialog(null, "wromg date format", "wromg date format", JOptionPane.WARNING_MESSAGE);
                 } 
                 
+                
+                
+                Control.Update_Invoice_lines(Inv_L_Table , index );
                 String[][] H_Data = Control.get_Header_data();
         
         
@@ -400,6 +405,29 @@ Inv_L_Table.clearSelection();
         
         }
         );
+
+        
+        
+         String Data[][] = Control.get_Lines_data(clicked_Header_row);
+            Inv_L_Table.setModel(new javax.swing.table.DefaultTableModel(
+            Data,
+            L_Cols)  {
+                    
+                @Override
+    public boolean isCellEditable(int row, int col) {
+       
+            switch (col) {
+         case 0:
+         case 4:
+             return false;
+         default:
+             return true;
+      }
+            }
+        
+        }
+        );
+        
         Inv_H_Table.clearSelection();
         Inv_L_Table.clearSelection();
        

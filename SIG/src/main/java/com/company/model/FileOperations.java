@@ -53,13 +53,14 @@ public class FileOperations  {
                     date = formatter.parse(Invoice_without_commas[1]);
                 } catch (ParseException e) {
                     //wrong date format
+                    JOptionPane.showMessageDialog(null, "wrong date format", "wrong date format", JOptionPane.WARNING_MESSAGE);
                 }
 
                 Invoice_Header Inv_H = new Invoice_Header(Integer.parseInt(Invoice_without_commas[0]) ,date , Invoice_without_commas[2]);
                 Invoices.add(Inv_H);
                 Inv_H_count++;
             }
-            else {/*more or less columns*/}
+            else {/*more or less columns*/JOptionPane.showMessageDialog(null, "records Contain more or less columns than expected", "wromg date Structure", JOptionPane.WARNING_MESSAGE);}
         }
 
         return Invoices;

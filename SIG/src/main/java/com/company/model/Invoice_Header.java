@@ -36,6 +36,13 @@ public class Invoice_Header {
     public int get_Lines_No() {
         return Lines.size();
     }
+    public void remove_all_lines()
+    {
+        for (int i = Lines.size()-1; i >= 0; i--) {
+        Lines.remove(i);
+        }
+        
+    }
     public void add_Line(Invoice_Line Line) {
         Line.setInv_id(Lines.size());
         Lines.add(Line);

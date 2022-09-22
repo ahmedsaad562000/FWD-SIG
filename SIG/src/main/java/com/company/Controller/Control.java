@@ -134,16 +134,32 @@ public class Control {
             
         }
       
-     /* public static void Update_Tables(JTable Inv_L_Table , int Invoice_index)
+      public static void Update_Invoice_lines(JTable Inv_L_Table , int Invoice_index)
       {
+          
+          String [][] linesdata = new String[Inv_L_Table.getRowCount()][Inv_L_Table.getColumnCount()];
+          Invoice_Header Inv_h = FileOperations.getInv_H().get(Invoice_index);
          for(int i = 0  ; i<Inv_L_Table.getRowCount();i++) 
          {
-             FileOperations.getInv_H().get(Invoice_index).get
+             for (int j = 0; j < Inv_L_Table.getColumnCount(); j++) 
+             {
+                 linesdata[i][j] = Inv_L_Table.getModel().getValueAt(i, j).toString();
+                 
+             }
+ 
          }
+         Inv_h.remove_all_lines();
+          for (int i = 0; i < Inv_L_Table.getRowCount(); i++) {
+              Inv_h.add_Line(new Invoice_Line(Inv_h , linesdata[i][1] ,Integer.parseInt(linesdata[i][2]) , Integer.parseInt(linesdata[i][3])));
+          }
+         
+         
+         
+         
        
             
        
-    }*/
+    }
 }
     /*public static String[][] get_Lines_data()
     {
