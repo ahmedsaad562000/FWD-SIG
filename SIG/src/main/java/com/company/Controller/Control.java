@@ -133,11 +133,18 @@ public class Control {
         }
             
         }
-    
+      
+      public static void Update_Tables(JTable Inv_H_Table ,JTable Inv_L_Table)
+      {
+         for(int i = 0  ; i<Inv_H_Table.getRowCount();i++) 
+         {
+             
+         }
        
             
        
     }
+}
     /*public static String[][] get_Lines_data()
     {
 
