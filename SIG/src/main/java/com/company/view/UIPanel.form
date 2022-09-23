@@ -125,6 +125,7 @@
   <SubComponents>
     <Component class="javax.swing.JButton" name="new_item_btn">
       <Properties>
+        <Property name="mnemonic" type="int" value="67"/>
         <Property name="actionCommand" type="java.lang.String" value="Save"/>
         <Property name="label" type="java.lang.String" value="Create Item"/>
       </Properties>
@@ -137,6 +138,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="del_item_btn">
       <Properties>
+        <Property name="mnemonic" type="int" value="73"/>
         <Property name="actionCommand" type="java.lang.String" value="h"/>
         <Property name="label" type="java.lang.String" value="Delete Item"/>
       </Properties>
@@ -146,6 +148,8 @@
     </Component>
     <Component class="javax.swing.JButton" name="Create_Invoice_Btn">
       <Properties>
+        <Property name="mnemonic" type="int" value="78"/>
+        <Property name="toolTipText" type="java.lang.String" value=""/>
         <Property name="label" type="java.lang.String" value="Create New Invoice"/>
       </Properties>
       <Events>
@@ -154,6 +158,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="Delete_btn">
       <Properties>
+        <Property name="mnemonic" type="int" value="68"/>
         <Property name="label" type="java.lang.String" value="Delete Invoice"/>
       </Properties>
       <Events>
@@ -209,6 +214,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="save_btn">
       <Properties>
+        <Property name="mnemonic" type="int" value="83"/>
         <Property name="actionCommand" type="java.lang.String" value="Save"/>
         <Property name="label" type="java.lang.String" value="Save Cahnges"/>
       </Properties>

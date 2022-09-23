@@ -99,6 +99,7 @@ public class UIPanel extends javax.swing.JPanel {
             }
         });
 
+        new_item_btn.setMnemonic('C');
         new_item_btn.setActionCommand("Save");
         new_item_btn.setLabel("Create Item");
         new_item_btn.addActionListener(new java.awt.event.ActionListener() {
@@ -107,6 +108,7 @@ public class UIPanel extends javax.swing.JPanel {
             }
         });
 
+        del_item_btn.setMnemonic('I');
         del_item_btn.setActionCommand("h");
         del_item_btn.setLabel("Delete Item");
         del_item_btn.addActionListener(new java.awt.event.ActionListener() {
@@ -115,6 +117,8 @@ public class UIPanel extends javax.swing.JPanel {
             }
         });
 
+        Create_Invoice_Btn.setMnemonic('N');
+        Create_Invoice_Btn.setToolTipText("");
         Create_Invoice_Btn.setLabel("Create New Invoice");
         Create_Invoice_Btn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -122,6 +126,7 @@ public class UIPanel extends javax.swing.JPanel {
             }
         });
 
+        Delete_btn.setMnemonic('D');
         Delete_btn.setLabel("Delete Invoice");
         Delete_btn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -151,6 +156,7 @@ public class UIPanel extends javax.swing.JPanel {
 
         Cust_TF.setToolTipText("");
 
+        save_btn.setMnemonic('S');
         save_btn.setActionCommand("Save");
         save_btn.setLabel("Save Cahnges");
         save_btn.addActionListener(new java.awt.event.ActionListener() {
