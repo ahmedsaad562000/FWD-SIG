@@ -12,7 +12,7 @@ public class Main {
 
     public static void main(String[] args) {
         MainFrame mf = new MainFrame(); //Main Frame of the project
-        FileOperations.open_Header_file(mf , true); //Load Invoices from the default CSV files 
+       // FileOperations.open_Header_file(mf , true); //Load Invoices from the default CSV files 
         mf.setVisible(true);
         mf.setContentPane(new UIPanel());
         mf.pack();
