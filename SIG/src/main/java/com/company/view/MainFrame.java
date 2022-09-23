@@ -9,30 +9,29 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class MainFrame extends JFrame implements ActionListener {
+   //Local Coomponents of Main Frame
     private JMenuBar Jmb;
     private JMenu File;
     private JMenuItem openmenuitem;
     private JMenuItem savemenuitem;
     private JMenuItem exitmenuitem;
 
-
-    private JTextArea JTA;
-    private JPanel ContentPanel;
-    private JPanel LeftSidePanel;
-    private JPanel RightSidePanelTop;
-    private JPanel RightSidePanelBot;
-    private JTable Inv_H_Table;
+    
+  
 
     public MainFrame() {
+        
         ////////////////////////////////////////////////
+        //Main frame settings
         super("Menu bar");
         setSize(1280, 720);
         setLocation(400, 250);
         setVisible(true);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        //setLayout(new FlowLayout());
+        
         setLayout(new GridLayout(1, 2));
         /////////////////////////////////////////////
+        //Menubar setup
         Jmb = new JMenuBar();
         File = new JMenu("File");
         File.setMnemonic('F');
@@ -64,7 +63,7 @@ public class MainFrame extends JFrame implements ActionListener {
 
     }
 
-
+    //Open , Save and Exit menuitems
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getActionCommand().equals("open")) {

@@ -1,3 +1,5 @@
+//A frame that was only used for testing in intellij but has no effect on the actual project
+
 package com.company.view;
 
 import com.company.model.FileOperations;

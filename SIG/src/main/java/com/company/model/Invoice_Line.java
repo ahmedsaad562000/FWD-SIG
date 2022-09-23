@@ -19,7 +19,7 @@ public class Invoice_Line {
         parent_Invoice = pInv;
         Update_total_line_Cost();
     }
-
+    //setters and getters
     public void setInv_id(int inv_id) {
         this.inv_id = inv_id;
     }
@@ -28,7 +28,7 @@ public class Invoice_Line {
         return inv_id;
     }
     
-
+    //method to update line cost
     public void Update_total_line_Cost()
     {
         this.Total = this.Price*this.Count;
@@ -37,7 +37,7 @@ public class Invoice_Line {
     public int getTotal() {
         return Total;
     }
-
+//Method used to print Lines in console
     @Override
     public String toString() {
         return " " + Item_Name +
@@ -45,12 +45,13 @@ public class Invoice_Line {
                 ", " + Count ;
 
     }
-
+//Method used to save data in files
     public String string_to_be_saved() {
 
 
         return this.parent_Invoice.getNo() +","+this.Item_Name+","+this.Price +","+ this.Count;
     }
+    //Method used to fill Lines Table
     public  String[] string_array_to_filltable()
     {   
         int n = this.parent_Invoice.getNo();

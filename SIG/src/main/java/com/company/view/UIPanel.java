@@ -24,7 +24,7 @@ import javax.swing.table.TableModel;
  * @author Ahmed
  */
 public class UIPanel extends javax.swing.JPanel {
-
+    //getters of tables
     public JTable getInv_H_Table() {
         return Inv_H_Table;
     }
@@ -36,17 +36,17 @@ public class UIPanel extends javax.swing.JPanel {
     /**
      * Creates new form UIPanel
      */
-    String[] H_Cols = {"No.","Date","Customer","Total"};
-    String[] L_Cols = {"No.","Item Name","Item Price","Count","Item Total"};
-    public static int clicked_Header_row = -1 ;
-    public static int clicked_Line_row = -1 ;
+    private static String[] H_Cols = {"No.","Date","Customer","Total"};
+    private static String[] L_Cols = {"No.","Item Name","Item Price","Count","Item Total"};
+    private static int clicked_Header_row = -1 ;
+    private static int clicked_Line_row = -1 ;
     
     public UIPanel() {
         initComponents();
         String[][] H_Data = Control.get_Header_data();
         
         
-        
+        //Update Invoice_Headers Table
         Inv_H_Table.setModel(new javax.swing.table.DefaultTableModel(
             H_Data,
             H_Cols)
@@ -339,20 +339,19 @@ Inv_L_Table.clearSelection();
     }//GEN-LAST:event_del_item_btnActionPerformed
 
     private void Inv_H_TableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Inv_H_TableMouseClicked
-        // TODO add your handling code here:
-         JTable source;
-        source = (JTable)evt.getSource();
-        clicked_Line_row = -1;
+        
+            //Get Invoice number of selected invoice
+            clicked_Line_row = -1;
             clicked_Header_row = Inv_H_Table.getSelectedRow();
-            int column;
-        column = Inv_H_Table.getSelectedColumn()+1;
             int index =  Integer.valueOf(Inv_H_Table.getModel().getValueAt(clicked_Header_row, 0).toString());
             clicked_Header_row = index;
             String Data[][] = Control.get_Lines_data(clicked_Header_row);
+            
+            
             Inv_L_Table.setModel(new javax.swing.table.DefaultTableModel(
             Data,
             L_Cols)  {
-                    
+                    //Lines table first and last columns are uneditable
                 @Override
     public boolean isCellEditable(int row, int col) {
        
@@ -370,7 +369,7 @@ Inv_L_Table.clearSelection();
 
             
             
-
+            //Update fiedls in the right upper screen
             String[] selected_Inv_data= new String[4];
             selected_Inv_data = Control.get_Selected_Invoice_data(clicked_Header_row);
             
@@ -394,13 +393,15 @@ Inv_L_Table.clearSelection();
             int index = Inv_H_Table.getSelectedRow();
                 Date date = null;
                 try {
+                    //date format checker
                     date = formatter.parse(Date_TF.getText());
                     Control.update_Date_and_Customer(clicked_Header_row, date, Cust_TF.getText());
                 } catch (ParseException e) {
-                    JOptionPane.showMessageDialog(null, "wromg date format", "wromg date format", JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "wrong date format", "wrong date format", JOptionPane.WARNING_MESSAGE);
                 } 
                 
                 
+               
                 
                 Control.Update_Invoice_lines(Inv_L_Table , index );
                 String[][] H_Data = Control.get_Header_data();
@@ -475,7 +476,8 @@ Inv_L_Table.clearSelection();
     }//GEN-LAST:event_Create_Invoice_BtnActionPerformed
 
     private void Delete_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Delete_btnActionPerformed
-      if(clicked_Header_row == -1 )
+     //Remove Line from both Invoice table and Invoice_Header (Inv_H) array; 
+        if(clicked_Header_row == -1 )
         {
             return;
         }

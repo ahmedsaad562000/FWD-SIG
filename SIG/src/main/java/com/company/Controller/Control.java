@@ -1,3 +1,5 @@
+// Controller class that uses variables/methods from the model package; 
+
 package com.company.Controller;
 
 import com.company.model.FileOperations;
@@ -9,7 +11,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class Control {
-
+    
     public static String[][] get_Header_data()
     {
 
@@ -23,7 +25,8 @@ public class Control {
         return Data;
 
     }   
-        public static String[][] get_Lines_data(int no)
+    //Method used to get lines data of a specific Invoice in an array of array of strings to be used to fill Lines Table
+    public static String[][] get_Lines_data(int no)
     {
 
         ArrayList<Invoice_Header> Inv_Headers = FileOperations.getInv_H();
@@ -48,7 +51,7 @@ public class Control {
         else
         {return null;}
     }
-        
+    
     public static String[] get_Selected_Invoice_data(int no)
     {
 
@@ -72,7 +75,7 @@ public class Control {
         else
         {return null;}
     }
-    
+    //Method used to update Date and Customer of selected Invoice
     public static void update_Date_and_Customer(int selected_invoice , Date date , String Customer)
     {
         ArrayList<Invoice_Header> Inv_Headers = FileOperations.getInv_H();
@@ -92,6 +95,7 @@ public class Control {
         }
             
         }
+    // Method used to add line into Selected Invoice
      public static void add_line_into_selected_inv(int selected_invoice , String item_name , int price , int count)
     {
         ArrayList<Invoice_Header> Inv_Headers = FileOperations.getInv_H();
@@ -112,7 +116,7 @@ public class Control {
         }
             
         }
-     
+     //Method Used to delete line from selected invice
       public static void delete_line_from_selected_inv(int selected_invoice , int line_no)
     {
         ArrayList<Invoice_Header> Inv_Headers = FileOperations.getInv_H();
@@ -133,7 +137,9 @@ public class Control {
         }
             
         }
-      public static void Update_Header_Table(JTable Inv_H_Table)
+      
+      
+      public static void Update_Header_Table(JTable Inv_H_Table) //Method used to update Header table after loading new file
       {
             String[][] H_Data = Control.get_Header_data();
             String[] H_Cols = {"No.","Date","Customer","Total"};
@@ -144,7 +150,7 @@ public class Control {
                 H_Cols)  {
                     
                 @Override
-    public boolean isCellEditable(int row, int column) {
+    public boolean isCellEditable(int row, int column) { // all fiels are not editable in the header table
        
        return false;
             }
@@ -154,7 +160,7 @@ public class Control {
         
           
       }
-      public static void Update_Invoice_lines(JTable Inv_L_Table , int Invoice_index)
+      public static void Update_Invoice_lines(JTable Inv_L_Table , int Invoice_index) //use data inserted in lines table to update actual lines in Invoices 
       {
           
           String [][] linesdata = new String[Inv_L_Table.getRowCount()][Inv_L_Table.getColumnCount()];
