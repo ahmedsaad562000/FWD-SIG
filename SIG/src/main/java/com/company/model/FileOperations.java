@@ -137,7 +137,7 @@ String dir = System.getProperty("user.dir");
 
                 String sb = new String(b);
                 //Convert input stream into array of string where each line is a string
-                String[] Inv_Headers_Text = sb.split(System.lineSeparator());
+                String[] Inv_Headers_Text = sb.split("\n");
                 ArrayList<Invoice_Header>  in_H_temp = new ArrayList<Invoice_Header>();
                 in_H_temp = read_Header_File(Inv_Headers_Text);
                 
@@ -205,7 +205,7 @@ String dir = System.getProperty("user.dir");
                 FIS.read(b);
 
                 String sb = new String(b);
-                String[] Inv_Lines_Text = sb.split(System.lineSeparator());
+                String[] Inv_Lines_Text = sb.split("\n");
                 read_Line_File(Inv_Lines_Text);
                 print_in_console();
 
@@ -249,7 +249,7 @@ String dir = System.getProperty("user.dir");
         String Inv_H_print = "";
         for (int i = 0 ; i<Inv_H.size() ; i++)
         {
-            if(Inv_H.get(i)!=null){Inv_H_print+=Inv_H.get(i).string_to_be_saved();Inv_H_print+=System.getProperty("line.separator");}
+            if(Inv_H.get(i)!=null){Inv_H_print+=Inv_H.get(i).string_to_be_saved();Inv_H_print+="\n";}
         }
         FileOutputStream FOS = null;
         JFileChooser JFC = new JFileChooser();

@@ -117,7 +117,7 @@ public class Invoice_Header {
         for (int i = 0; i < Lines.size(); i++) {
             if (Lines.get(i) != null) {
                 printlines += Lines.get(i).string_to_be_saved();
-                printlines+=System.getProperty("line.separator");
+                printlines+="\n";
             }
 
         }
