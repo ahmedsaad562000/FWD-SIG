@@ -8,7 +8,6 @@ import com.company.Controller.Control;
 import com.company.model.FileOperations;
 import com.company.model.Invoice_Header;
 import com.company.model.Invoice_Line;
-import com.sun.org.apache.xml.internal.serialize.LineSeparator;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
