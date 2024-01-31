@@ -7,7 +7,9 @@ The program loads and saves Invoices from/to CSV files that can be choosed by th
  
 These invoices contain transactions of different clients with items (lines) for each invoice.
  
-a Fast demo video is uploaded
+<video controls>
+<source src="Fast Demo.mkv" type="video/mp4">
+</video>
 
 <b>Usage:</b>
 
